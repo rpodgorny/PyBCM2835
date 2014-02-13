@@ -581,14 +581,27 @@ static PyMethodDef PyBCM2835Methods[] = {
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
+
+static struct PyModuleDef moduledef = {
+	PyModuleDef_HEAD_INIT,
+	"PyBCM2835",
+	NULL,
+	-1,
+	PyBCM2835Methods,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
 PyMODINIT_FUNC
-initPyBCM2835(void)
+PyInit_PyBCM2835(void)
 {
     PyObject *m;
 
-    m = Py_InitModule("PyBCM2835", PyBCM2835Methods);
+    m = PyModule_Create(&moduledef);
     if (m == NULL)
-        return;
+        return NULL;
 
 	// Constants
 	PyModule_AddIntConstant(m,"HIGH",1);
@@ -766,4 +779,6 @@ initPyBCM2835(void)
 	PyBCM2835Error = PyErr_NewException("PyBCM2835.error", NULL, NULL);
     Py_INCREF(PyBCM2835Error);
     PyModule_AddObject(m, "error", PyBCM2835Error);
+
+	return m;
 }
