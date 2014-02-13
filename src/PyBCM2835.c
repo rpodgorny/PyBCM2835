@@ -578,7 +578,7 @@ static PyMethodDef PyBCM2835Methods[] = {
 	{"spi_transfer", (PyCFunction)PyBCM2835_spi_transfer, METH_VARARGS, "Transfers one byte to and from the currently selected SPI slave."},
 	{"spi_transfernb", (PyCFunction)PyBCM2835_spi_transfernb, METH_VARARGS, "Transfers any number of bytes to and from the currently selected SPI slave."},
 	{"spi_transfern", (PyCFunction)PyBCM2835_spi_transfern, METH_VARARGS, "Transfers any number of bytes to and from the currently selected SPI slave using bcm2835_spi_transfernb. "},
-	{NULL, NULL, 0, NULL}        /* Sentinel */
+	{NULL, NULL, 0, NULL} /* Sentinel */
 };
 
 
